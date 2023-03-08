@@ -20,7 +20,7 @@ class EosioSwiftAbieosTests: XCTestCase {
         let hex = "1686755CA99DE8E73E12000000000100A6823403EA3055000000572D3CCDCD0100AEAA4AC15CFD4500000000A8ED32323B00AEAA4AC15CFD4500000060D234CD3DA06806000000000004454F53000000001A746865206772617373686F70706572206C69657320686561767900"
 
         let json = """
-        {"expiration":"2019-02-26T18:31:50.000","ref_block_num":40361,"ref_block_prefix":306112488,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"eosio.token","name":"transfer","authorization":[{"actor":"cryptkeeper","permission":"active"}],"data":"00AEAA4AC15CFD4500000060D234CD3DA06806000000000004454F53000000001A746865206772617373686F70706572206C696573206865617679"}],"transaction_extensions":[]}
+        {"expiration":"2019-02-26T18:31:50.000","ref_block_num":40361,"ref_block_prefix":306112488,"max_net_usage_words":0,"max_cpu_usage_ms":0,"delay_sec":0,"context_free_actions":[],"actions":[{"account":"vex.token","name":"transfer","authorization":[{"actor":"cryptkeeper","permission":"active"}],"data":"00AEAA4AC15CFD4500000060D234CD3DA06806000000000004454F53000000001A746865206772617373686F70706572206C696573206865617679"}],"transaction_extensions":[]}
         """
 
         do {
@@ -102,7 +102,7 @@ class EosioSwiftAbieosTests: XCTestCase {
         "data" : "CBDD956F52ACD910C3C958136D72F8560D1846BC7CF3157F5FBFB72D3001DE4597F4A1FDBECDA6D59C96A43009FC5E5D7B8F639B1269C77CEC718460DCC19CB30100A6823403EA3055000000572D3CCDCD0143864D5AF0FE294D44D19C612036CBE8C098414C4A12A5A7BB0BFE7DB1556248"
         },
         {
-        "account" : "eosio.token",
+        "account" : "vex.token",
         "name" : "transfer",
         "authorization" : [
         {

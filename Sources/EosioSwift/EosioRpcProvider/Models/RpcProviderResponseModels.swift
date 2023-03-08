@@ -553,7 +553,7 @@ public struct EosioRpcCurrencyStatsResponse: Decodable, EosioRpcResponseProtocol
     public var symbol: String
     public var currencyStats: CurrencyStats
 
-    private struct CustomCodingKeys: CodingKey { // to decode custom symbol key (i.e. "EOS")
+    private struct CustomCodingKeys: CodingKey { // to decode custom symbol key (i.e. "VEX")
         var stringValue: String
         init?(stringValue: String) { self.stringValue = stringValue }
         var intValue: Int?
@@ -563,7 +563,7 @@ public struct EosioRpcCurrencyStatsResponse: Decodable, EosioRpcResponseProtocol
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CustomCodingKeys.self)
 
-        symbol = container.allKeys.first?.stringValue ?? "EOS"
+        symbol = container.allKeys.first?.stringValue ?? "VEX"
         currencyStats = try container.decode(CurrencyStats.self, forKey: CustomCodingKeys(stringValue: symbol)!)
     }
 }

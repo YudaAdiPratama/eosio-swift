@@ -30,13 +30,13 @@ class EosioTransactionAbisTests: XCTestCase {
 
     func testAddB64Abis() {
         do {
-            try abis.addAbi(name: EosioName("eosio.token"), base64: tokenAbiB64)
-            try abis.addAbi(name: EosioName("eosio.msig"), base64: msigAbiB64)
-            try abis.addAbi(name: EosioName("eosio"), base64: eosioAbiB64)
+            try abis.addAbi(name: EosioName("vex.token"), base64: tokenAbiB64)
+            try abis.addAbi(name: EosioName("vex.msig"), base64: msigAbiB64)
+            try abis.addAbi(name: EosioName("vexcore"), base64: eosioAbiB64)
             let hexabis = abis.hexAbis()
-            XCTAssertTrue(hexabis[try EosioName("eosio.token")] == tokenAbiHex)
-            XCTAssertTrue(hexabis[try EosioName("eosio.msig")] == msigAbiHex)
-            XCTAssertTrue(try abis.hashAbi(name: EosioName("eosio")) == "d745bac0c38f95613e0c1c2da58e92de1e8e94d658d64a00293570cc251d1441")
+            XCTAssertTrue(hexabis[try EosioName("vex.token")] == tokenAbiHex)
+            XCTAssertTrue(hexabis[try EosioName("vex.msig")] == msigAbiHex)
+            XCTAssertTrue(try abis.hashAbi(name: EosioName("vexcore")) == "d745bac0c38f95613e0c1c2da58e92de1e8e94d658d64a00293570cc251d1441")
         } catch {
             XCTFail("\(error)")
         }
@@ -44,13 +44,13 @@ class EosioTransactionAbisTests: XCTestCase {
 
     func testAddHexAbis() {
         do {
-            try abis.addAbi(name: EosioName("eosio.token"), hex: tokenAbiHex)
-            try abis.addAbi(name: EosioName("eosio.msig"), hex: msigAbiHex)
+            try abis.addAbi(name: EosioName("vex.token"), hex: tokenAbiHex)
+            try abis.addAbi(name: EosioName("vex.msig"), hex: msigAbiHex)
             let hexAbis = abis.hexAbis()
-            try XCTAssertTrue(hexAbis[EosioName("eosio.token")] == tokenAbiHex)
-            try XCTAssertTrue(hexAbis[EosioName("eosio.msig")] == msigAbiHex)
-            try XCTAssertTrue(abis.hexAbi(name: EosioName("eosio.token")) == tokenAbiHex)
-            try XCTAssertTrue(abis.hexAbi(name: EosioName("eosio.msig")) == msigAbiHex)
+            try XCTAssertTrue(hexAbis[EosioName("vex.token")] == tokenAbiHex)
+            try XCTAssertTrue(hexAbis[EosioName("vex.msig")] == msigAbiHex)
+            try XCTAssertTrue(abis.hexAbi(name: EosioName("vex.token")) == tokenAbiHex)
+            try XCTAssertTrue(abis.hexAbi(name: EosioName("vex.msig")) == msigAbiHex)
         } catch {
             XCTFail("\(error)")
         }
@@ -58,13 +58,13 @@ class EosioTransactionAbisTests: XCTestCase {
 
     func testAddDataAbis() {
         do {
-            try abis.addAbi(name: EosioName("eosio.token"), data: Data(hex: tokenAbiHex))
-            try abis.addAbi(name: EosioName("eosio.msig"), data: Data(hex: msigAbiHex))
+            try abis.addAbi(name: EosioName("vex.token"), data: Data(hex: tokenAbiHex))
+            try abis.addAbi(name: EosioName("vex.msig"), data: Data(hex: msigAbiHex))
             let hexAbis = abis.hexAbis()
-            try XCTAssertTrue(hexAbis[EosioName("eosio.token")] == tokenAbiHex)
-            try XCTAssertTrue(hexAbis[EosioName("eosio.msig")] == msigAbiHex)
-            try XCTAssertTrue(abis.hexAbi(name: EosioName("eosio.token")) == tokenAbiHex)
-            try XCTAssertTrue(abis.hexAbi(name: EosioName("eosio.msig")) == msigAbiHex)
+            try XCTAssertTrue(hexAbis[EosioName("vex.token")] == tokenAbiHex)
+            try XCTAssertTrue(hexAbis[EosioName("vex.msig")] == msigAbiHex)
+            try XCTAssertTrue(abis.hexAbi(name: EosioName("vex.token")) == tokenAbiHex)
+            try XCTAssertTrue(abis.hexAbi(name: EosioName("vex.msig")) == msigAbiHex)
         } catch {
             XCTFail("\(error)")
         }
@@ -72,13 +72,13 @@ class EosioTransactionAbisTests: XCTestCase {
 
     func testHashAbis() {
         do {
-            try abis.addAbi(name: EosioName("eosio.token"), hex: tokenAbiHex)
-            try abis.addAbi(name: EosioName("eosio.msig"), hex: msigAbiHex)
+            try abis.addAbi(name: EosioName("vex.token"), hex: tokenAbiHex)
+            try abis.addAbi(name: EosioName("vex.msig"), hex: msigAbiHex)
             let hashAbis = abis.hashAbis()
-            try XCTAssertTrue(hashAbis[EosioName("eosio.token")] == "f5c26ae3f825a8e3d26f7e82e889fe531a3376d66811953308944e86aa9030a7")
-            try XCTAssertTrue(hashAbis[EosioName("eosio.msig")] == "f3cbebc8d6cb0a6f85d44774b9303615d9523c12a5419192446a6000a0cea732")
-            try XCTAssertTrue(abis.hashAbi(name: EosioName("eosio.token")) == "f5c26ae3f825a8e3d26f7e82e889fe531a3376d66811953308944e86aa9030a7")
-            try XCTAssertTrue(abis.hashAbi(name: EosioName("eosio.msig")) == "f3cbebc8d6cb0a6f85d44774b9303615d9523c12a5419192446a6000a0cea732")
+            try XCTAssertTrue(hashAbis[EosioName("vex.token")] == "f5c26ae3f825a8e3d26f7e82e889fe531a3376d66811953308944e86aa9030a7")
+            try XCTAssertTrue(hashAbis[EosioName("vex.msig")] == "f3cbebc8d6cb0a6f85d44774b9303615d9523c12a5419192446a6000a0cea732")
+            try XCTAssertTrue(abis.hashAbi(name: EosioName("vex.token")) == "f5c26ae3f825a8e3d26f7e82e889fe531a3376d66811953308944e86aa9030a7")
+            try XCTAssertTrue(abis.hashAbi(name: EosioName("vex.msig")) == "f3cbebc8d6cb0a6f85d44774b9303615d9523c12a5419192446a6000a0cea732")
         } catch {
             XCTFail("\(error)")
         }

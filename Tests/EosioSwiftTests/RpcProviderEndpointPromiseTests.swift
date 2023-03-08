@@ -420,7 +420,7 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
             return retVal
         }).name = "GetAbi stub"
         let expect = expectation(description: "testGetAbi")
-        let requestParameters = EosioRpcAbiRequest(accountName: "eosio.token")
+        let requestParameters = EosioRpcAbiRequest(accountName: "vex.token")
 
         firstly {
             (rpcProvider?.getAbi(.promise, requestParameters: requestParameters))!
@@ -546,7 +546,7 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
             return retVal
         }).name = "GetCurrencyBalance stub"
         let expect = expectation(description: "testGetCurrencyBalance")
-        let requestParameters = EosioRpcCurrencyBalanceRequest(code: "eosio.token", account: "cryptkeeper", symbol: "EOS")
+        let requestParameters = EosioRpcCurrencyBalanceRequest(code: "vex.token", account: "cryptkeeper", symbol: "VEX")
 
         firstly {
             (rpcProvider?.getCurrencyBalance(.promise, requestParameters: requestParameters))!
@@ -590,7 +590,7 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
             return retVal
         }).name = "GetCurrencyBalance stub"
         let expect = expectation(description: "getCurrencyStats")
-        let requestParameters = EosioRpcCurrencyStatsRequest(code: "eosio.token", symbol: "EOS")
+        let requestParameters = EosioRpcCurrencyStatsRequest(code: "vex.token", symbol: "VEX")
 
         firstly {
             (rpcProvider?.getCurrencyStats(.promise, requestParameters: requestParameters))!
@@ -599,7 +599,7 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
                 XCTFail("testGetCurrencyStats unhappy path should not fulfill promise!")
             }
             XCTAssertNotNil($0._rawResponse)
-            XCTAssert($0.symbol == "EOS")
+            XCTAssert($0.symbol == "VEX")
         }.catch {
             print($0)
             if unhappy {
@@ -633,13 +633,13 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
             }
         }).name = "GetCurrencyStats stub"
         let expect = expectation(description: "getCurrencyStats")
-        let requestParameters = EosioRpcCurrencyStatsRequest(code: "eosio.token", symbol: "SYS")
+        let requestParameters = EosioRpcCurrencyStatsRequest(code: "vex.token", symbol: "VEX")
 
         firstly {
             (rpcProvider?.getCurrencyStats(.promise, requestParameters: requestParameters))!
             }.done {
                 XCTAssertNotNil($0._rawResponse)
-                XCTAssert($0.symbol == "SYS")
+                XCTAssert($0.symbol == "VEX")
             }.catch {
                 print($0)
                 if unhappy {
@@ -678,7 +678,7 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
             return retVal
         }).name = "GetRawCodeAndAbis stub"
         let expect = expectation(description: "getRawCodeAndAbi")
-        let requestParameters = EosioRpcRawCodeAndAbiRequest(accountName: "eosio.token")
+        let requestParameters = EosioRpcRawCodeAndAbiRequest(accountName: "vex.token")
 
         firstly {
             (rpcProvider?.getRawCodeAndAbi(.promise, requestParameters: requestParameters))!
@@ -687,7 +687,7 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
                 XCTFail("testGetRawCodeAndAbi unhappy path should not fulfill promise!")
             }
             XCTAssertNotNil($0._rawResponse)
-            XCTAssert($0.accountName == "eosio.token")
+            XCTAssert($0.accountName == "vex.token")
         }.catch {
             print($0)
             if unhappy {
@@ -723,7 +723,7 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
         let expect = expectation(description: "testGetRawCodeAndAbiWithStringSignature")
 
         firstly {
-            (rpcProvider?.getRawCodeAndAbi(.promise, accountName: "eosio.token"))!
+            (rpcProvider?.getRawCodeAndAbi(.promise, accountName: "vex.token"))!
         }.done {
             if unhappy {
                 XCTFail("testGetRawCodeAndAbiWithStringSignature unhappy path should not fulfill promise!")
@@ -856,7 +856,7 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
             return retVal
         }).name = "GetTableRows stub"
         let expect = expectation(description: "testGetTableRows")
-        let requestParameters = EosioRpcTableRowsRequest(scope: "cryptkeeper", code: "eosio.token", table: "accounts")
+        let requestParameters = EosioRpcTableRowsRequest(scope: "cryptkeeper", code: "vex.token", table: "accounts")
 
         firstly {
             (rpcProvider?.getTableRows(.promise, requestParameters: requestParameters))!
@@ -907,7 +907,7 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
             return retVal
         }).name = "GetTableByScope stub"
         let expect = expectation(description: "testGetTableByScope")
-        let requestParameters = EosioRpcTableByScopeRequest(code: "eosio.token")
+        let requestParameters = EosioRpcTableByScopeRequest(code: "vex.token")
 
         firstly {
             (rpcProvider?.getTableByScope(.promise, requestParameters: requestParameters))!
@@ -919,12 +919,12 @@ class RpcProviderEndpointPromiseTests: XCTestCase {
             XCTAssertNotNil($0.rows)
             XCTAssert($0.rows.count == 10)
             let row = $0.rows[8]
-            XCTAssert(row.code == "eosio.token")
-            XCTAssert(row.scope == "eosio")
+            XCTAssert(row.code == "vex.token")
+            XCTAssert(row.scope == "vexcore")
             XCTAssert(row.table == "accounts")
-            XCTAssert(row.payer == "eosio")
+            XCTAssert(row.payer == "vexcore")
             XCTAssert(row.count == 1)
-            XCTAssert($0.more == "eosio.ramfee")
+            XCTAssert($0.more == "vex.ramfee")
         }.catch {
             print($0)
             if unhappy {

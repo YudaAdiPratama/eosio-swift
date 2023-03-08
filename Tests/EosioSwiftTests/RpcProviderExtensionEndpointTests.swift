@@ -129,7 +129,7 @@ class RpcProviderExtensionEndpointTests: XCTestCase {
             return retVal
         }).name = "GetAbi stub"
         let expect = expectation(description: "testGetAbi")
-        let requestParameters = EosioRpcAbiRequest(accountName: "eosio.token")
+        let requestParameters = EosioRpcAbiRequest(accountName: "vex.token")
         rpcProvider?.getAbi(requestParameters: requestParameters) { response in
             switch response {
             case .success(let eosioRpcAbiResponse):
@@ -283,7 +283,7 @@ class RpcProviderExtensionEndpointTests: XCTestCase {
             return retVal
         }).name = "GetCurrencyBalance stub"
         let expect = expectation(description: "testGetCurrencyBalance")
-        let requestParameters = EosioRpcCurrencyBalanceRequest(code: "eosio.token", account: "cryptkeeper", symbol: "EOS")
+        let requestParameters = EosioRpcCurrencyBalanceRequest(code: "vex.token", account: "cryptkeeper", symbol: "EOS")
         rpcProvider?.getCurrencyBalance(requestParameters: requestParameters) { response in
             switch response {
             case .success(let eosioRpcCurrencyBalanceResponse):
@@ -308,7 +308,7 @@ class RpcProviderExtensionEndpointTests: XCTestCase {
             return retVal
         }).name = "GetCurrencyStats stub"
         let expect = expectation(description: "getCurrencyStats")
-        let requestParameters = EosioRpcCurrencyStatsRequest(code: "eosio.token", symbol: "EOS")
+        let requestParameters = EosioRpcCurrencyStatsRequest(code: "vex.token", symbol: "EOS")
         rpcProvider?.getCurrencyStats(requestParameters: requestParameters) { response in
             switch response {
             case .success(let eosioRpcCurrencyStatsResponse):
@@ -343,7 +343,7 @@ class RpcProviderExtensionEndpointTests: XCTestCase {
             }
         }).name = "GetCurrencyStats stub"
         let expect = expectation(description: "getCurrencyStats")
-        let requestParameters = EosioRpcCurrencyStatsRequest(code: "eosio.token", symbol: "SYS")
+        let requestParameters = EosioRpcCurrencyStatsRequest(code: "vex.token", symbol: "SYS")
         rpcProvider?.getCurrencyStats(requestParameters: requestParameters) { response in
             switch response {
             case .success(let eosioRpcCurrencyStatsResponse):
@@ -367,12 +367,12 @@ class RpcProviderExtensionEndpointTests: XCTestCase {
             return retVal
         }).name = "GetRawCodeAndAbis stub"
         let expect = expectation(description: "getRawCodeAndAbi")
-        let requestParameters = EosioRpcRawCodeAndAbiRequest(accountName: "eosio.token")
+        let requestParameters = EosioRpcRawCodeAndAbiRequest(accountName: "vex.token")
         rpcProvider?.getRawCodeAndAbi(requestParameters: requestParameters) { response in
             switch response {
             case .success(let eosioRpcRawCodeAndAbiResponse):
                 XCTAssertNotNil(eosioRpcRawCodeAndAbiResponse._rawResponse)
-                XCTAssert(eosioRpcRawCodeAndAbiResponse.accountName == "eosio.token")
+                XCTAssert(eosioRpcRawCodeAndAbiResponse.accountName == "vex.token")
             case .failure(let err):
                 print(err.description)
                 XCTFail("Failed get_raw_code_and_abi")
@@ -391,7 +391,7 @@ class RpcProviderExtensionEndpointTests: XCTestCase {
             return retVal
         }).name = "GetRawCodeAndAbis w String stub"
         let expect = expectation(description: "testGetRawCodeAndAbiWithStringSignature")
-        rpcProvider?.getRawCodeAndAbi(accountName: "eosio.token" ) { response in
+        rpcProvider?.getRawCodeAndAbi(accountName: "vex.token" ) { response in
             switch response {
             case .success(let eosioRpcRawCodeAndAbiResponse):
                 XCTAssertNotNil(eosioRpcRawCodeAndAbiResponse._rawResponse)
@@ -469,7 +469,7 @@ class RpcProviderExtensionEndpointTests: XCTestCase {
             return retVal
         }).name = "GetTableRows stub"
         let expect = expectation(description: "testGetTableRows")
-        let requestParameters = EosioRpcTableRowsRequest(scope: "cryptkeeper", code: "eosio.token", table: "accounts")
+        let requestParameters = EosioRpcTableRowsRequest(scope: "cryptkeeper", code: "vex.token", table: "accounts")
         rpcProvider?.getTableRows(requestParameters: requestParameters) { response in
             switch response {
             case .success(let eosioRpcTableRowsResponse):
@@ -501,7 +501,7 @@ class RpcProviderExtensionEndpointTests: XCTestCase {
             return retVal
         }).name = "GetTableByScope stub"
         let expect = expectation(description: "testGetTableByScope")
-        let requestParameters = EosioRpcTableByScopeRequest(code: "eosio.token")
+        let requestParameters = EosioRpcTableByScopeRequest(code: "vex.token")
         rpcProvider?.getTableByScope(requestParameters: requestParameters) { response in
             switch response {
             case .success(let eosioRpcTableByScopeResponse):
@@ -509,7 +509,7 @@ class RpcProviderExtensionEndpointTests: XCTestCase {
                 XCTAssertNotNil(eosioRpcTableByScopeResponse.rows)
                 XCTAssert(eosioRpcTableByScopeResponse.rows.count == 10)
                 let row = eosioRpcTableByScopeResponse.rows[8]
-                XCTAssert(row.code == "eosio.token")
+                XCTAssert(row.code == "vex.token")
                 XCTAssert(row.scope == "eosio")
                 XCTAssert(row.table == "accounts")
                 XCTAssert(row.payer == "eosio")

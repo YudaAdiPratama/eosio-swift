@@ -45,7 +45,7 @@ class EosioTransactionActionTests: XCTestCase {
             try _ = makeTransferActionWithError()
             XCTFail("Transfer succeeded despite being malformed")
         } catch let error as EosioError {
-            XCTAssertTrue(error.reason == "eosio.token6 is not a valid eosio name.")
+            XCTAssertTrue(error.reason == "vex.token6 is not a valid eosio name.")
         } catch {
             XCTFail("Unknown error")
         }
@@ -67,7 +67,7 @@ class EosioTransactionActionTests: XCTestCase {
         }
 
         let json2 = """
-        {"account":"eosio.token","authorization":[{"actor":"todd","permission":"active"}],"data":"00000000009012cd00000060d234cd3da0680600000000000453595300000000114772617373686f7070657220526f636b73","name":"transfer"}
+        {"account":"vex.token","authorization":[{"actor":"todd","permission":"active"}],"data":"00000000009012cd00000060d234cd3da0680600000000000453595300000000114772617373686f7070657220526f636b73","name":"transfer"}
         """
         XCTAssertTrue(json1 == json2)
     }
@@ -78,7 +78,7 @@ class EosioTransactionActionTests: XCTestCase {
         }
 
         guard let action = try? EosioTransaction.Action(
-            account: EosioName("eosio.token"),
+            account: EosioName("vex.token"),
             name: EosioName("transfer"),
             authorization: [EosioTransaction.Action.Authorization(
                 actor: EosioName("todd"),
@@ -101,7 +101,7 @@ class EosioTransactionActionTests: XCTestCase {
 
     func testActionDecode() {
         let json = """
-        {"account":"eosio.token","authorization":[{"actor":"todd","permission":"active"}],"data":"00000000009012cd00000060d234cd3da0680600000000000453595300000000114772617373686f7070657220526f636b73","name":"transfer"}
+        {"account":"vex.token","authorization":[{"actor":"todd","permission":"active"}],"data":"00000000009012cd00000060d234cd3da0680600000000000453595300000000114772617373686f7070657220526f636b73","name":"transfer"}
         """
         guard let jsonData = json.data(using: .utf8) else {
             return XCTFail("Failed to convert JSON to Data()")
@@ -112,7 +112,7 @@ class EosioTransactionActionTests: XCTestCase {
             return XCTFail("Failed to decode transaction Action from JSON Data")
         }
 
-        XCTAssertTrue(action.account.string == "eosio.token")
+        XCTAssertTrue(action.account.string == "vex.token")
         XCTAssertTrue(action.name.string == "transfer")
         XCTAssertTrue(action.authorization[0].actor.string == "todd")
         XCTAssertTrue(action.authorization[0].permission.string == "active")
@@ -170,7 +170,7 @@ class EosioTransactionActionTests: XCTestCase {
     func makeTransferActionWithEosioNames() throws -> EosioTransaction.Action {
 
         let action = try EosioTransaction.Action(
-            account: EosioName("eosio.token"),
+            account: EosioName("vex.token"),
             name: EosioName("transfer"),
             authorization: [EosioTransaction.Action.Authorization(
                 actor: EosioName("todd"),
@@ -188,7 +188,7 @@ class EosioTransactionActionTests: XCTestCase {
     func makeTransferActionWithStrings() throws -> EosioTransaction.Action {
 
         let action = try EosioTransaction.Action(
-            account: "eosio.token",
+            account: "vex.token",
             name: "transfer",
             authorization: [EosioTransaction.Action.Authorization(
                 actor: "todd",
@@ -206,7 +206,7 @@ class EosioTransactionActionTests: XCTestCase {
     func makeTransferActionWithError() throws -> EosioTransaction.Action {
 
         let action = try EosioTransaction.Action(
-            account: "eosio.token6",
+            account: "vex.token6",
             name: "transfer",
             authorization: [EosioTransaction.Action.Authorization(
                 actor: "todd",
@@ -224,7 +224,7 @@ class EosioTransactionActionTests: XCTestCase {
     func makeTransferActionWithSerializedData() throws -> EosioTransaction.Action {
 
         let action = try EosioTransaction.Action(
-            account: "eosio.token",
+            account: "vex.token",
             name: "transfer",
             authorization: [EosioTransaction.Action.Authorization(
                 actor: "todd",
@@ -237,7 +237,7 @@ class EosioTransactionActionTests: XCTestCase {
 
     func makeTransferActionWithDictionary() throws -> EosioTransaction.Action {
         let action = try EosioTransaction.Action(
-            account: "eosio.token",
+            account: "vex.token",
             name: "transfer",
             authorization: [EosioTransaction.Action.Authorization(
                 actor: "todd",

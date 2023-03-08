@@ -76,7 +76,7 @@ class ActionReturnTests: XCTestCase {
     
     func skip_testNoActionReturn() throws {
         let action = try EosioTransaction.Action(
-            account: EosioName("eosio.token"),
+            account: EosioName("vex.token"),
             name: EosioName("transfer"),
             authorization: [EosioTransaction.Action.Authorization(
                 actor: EosioName("bob"),

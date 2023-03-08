@@ -21,7 +21,7 @@ class EosioAbiProviderTests: XCTestCase {
     func testGetAbi() {
         let abiProvider = EosioAbiProvider(rpcProvider: rpcProvider!)
         do {
-            let eosioToken = try EosioName("eosio.token")
+            let eosioToken = try EosioName("vex.token")
             abiProvider.getAbi(chainId: "", account: eosioToken, completion: { (response) in
                 switch response {
                 case .success(let abi):
@@ -40,8 +40,8 @@ class EosioAbiProviderTests: XCTestCase {
     func testGetAbis() {
         let abiProvider = EosioAbiProvider(rpcProvider: rpcProvider!)
         do {
-            let eosioToken = try EosioName("eosio.token")
-            let eosio = try EosioName("eosio")
+            let eosioToken = try EosioName("vex.token")
+            let eosio = try EosioName("vexcore")
             abiProvider.getAbis(chainId: "", accounts: [eosioToken, eosio, eosioToken], completion: { (response) in
                 switch response {
                 case .success(let abi):
@@ -61,8 +61,8 @@ class EosioAbiProviderTests: XCTestCase {
     func testGetAbisBadAccount() {
         let abiProvider = EosioAbiProvider(rpcProvider: rpcProvider!)
         do {
-            let eosioToken = try EosioName("eosio.token")
-            let eosio = try EosioName("eosio")
+            let eosioToken = try EosioName("vex.token")
+            let eosio = try EosioName("vexcore")
             let badAccount = try EosioName("bad.acount")
             abiProvider.getAbis(chainId: "", accounts: [badAccount, eosioToken, eosio], completion: { (response) in
                 switch response {

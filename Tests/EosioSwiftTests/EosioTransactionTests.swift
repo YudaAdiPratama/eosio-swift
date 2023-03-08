@@ -930,7 +930,7 @@ struct Transfer: Codable {
 func makeTransferAction(from: EosioName, to: EosioName) throws -> EosioTransaction.Action { // swiftlint:disable:this identifier_name
 
     let action = try EosioTransaction.Action(
-        account: EosioName("eosio.token"),
+        account: EosioName("vex.token"),
         name: EosioName("transfer"),
         authorization: [EosioTransaction.Action.Authorization(
             actor: from,

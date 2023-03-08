@@ -402,7 +402,7 @@ class EosioRpcProviderTests: XCTestCase {
     func testGetRawAbiToken() {
         var callCount = 1
         (stub(condition: isHost("localhost")) { request in
-            let token = try? EosioName("eosio.token")
+            let token = try? EosioName("vex.token")
             let retVal = RpcTestConstants.getHHTTPStubsResponse(callCount: callCount, urlRelativePath: request.url?.relativePath, name: token!)
             callCount += 1
             return retVal
@@ -410,7 +410,7 @@ class EosioRpcProviderTests: XCTestCase {
 
         do {
             let expect = expectation(description: "testGetRawAbi")
-            let name = try EosioName("eosio.token")
+            let name = try EosioName("vex.token")
             let requestParameters = EosioRpcRawAbiRequest(accountName: name)
             rpcProvider.getRawAbiBase(requestParameters: requestParameters) { response in
                 switch response {
@@ -418,7 +418,7 @@ class EosioRpcProviderTests: XCTestCase {
                     guard let rpcRawAbiResponse = rawAbiResponse as? EosioRpcRawAbiResponse else {
                         return XCTFail("Failed to parse raw abi response")
                     }
-                    XCTAssertTrue(rpcRawAbiResponse.accountName == "eosio.token")
+                    XCTAssertTrue(rpcRawAbiResponse.accountName == "vex.token")
                     XCTAssertTrue(rpcRawAbiResponse.codeHash == "3e0cf4172ab025f9fff5f1db11ee8a34d44779492e1d668ae1dc2d129e865348")
                     XCTAssertTrue(rpcRawAbiResponse.abiHash == "43864d5af0fe294d44d19c612036cbe8c098414c4a12a5a7bb0bfe7db1556248")
                 case .failure(let err):
